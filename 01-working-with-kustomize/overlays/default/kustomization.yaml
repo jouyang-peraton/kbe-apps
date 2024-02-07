@@ -8,7 +8,7 @@ patchesJson6902:
   - target:
       version: v1
       kind: Deployment
-      name: welcome-php
+      name: nginx
     patch: |-
       - op: replace
         path: /spec/replicas
