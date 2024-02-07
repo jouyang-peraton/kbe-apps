@@ -1,16 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: null
-  labels:
-    app: welcome-php
-  name: welcome-php
+  name: nginx
   namespace: kapp
 spec:
   type: LoadBalancer
   selector:
-    app: welcome-php
+    app.kubernetes.io/name: nginx
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8080
+      targetPort: http      

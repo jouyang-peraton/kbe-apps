@@ -1,22 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: welcome-php
-  name: welcome-php
+  name: nginx
   namespace: kapp
+  labels:
+    app.kubernetes.io/name: nginx
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: welcome-php
-  strategy: {}
+      app.kubernetes.io/name: nginx
   template:
     metadata:
       labels:
-        app: welcome-php
+        app.kubernetes.io/name: nginx
     spec:
       containers:
-      - image: quay.io/redhatworkshops/welcome-php
-        name: welcome-php
-        resources: {}
+      - name: nginx
+        image: nginx:latest
+        ports:
+          - name: http
+            containerPort: 80
